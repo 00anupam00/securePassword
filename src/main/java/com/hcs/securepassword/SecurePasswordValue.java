@@ -13,6 +13,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigInteger;
+import java.net.URI;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
@@ -25,12 +27,12 @@ public class SecurePasswordValue {
     private JTextField textField1;
     private Timer timer;
     private int i = 0;
-    private java.util.List images;
+    private java.util.List<URL> images;
 
-    @Autowired
     private SecurePasswordService securePasswordService;
 
-    public SecurePasswordValue() {
+    public SecurePasswordValue(SecurePasswordService securePasswordService) {
+        this.securePasswordService= securePasswordService;
         $$$setupUI$$$();
         checkButton.addActionListener(new ActionListener() {
             /**
@@ -113,7 +115,7 @@ public class SecurePasswordValue {
             @Override
             public void actionPerformed(ActionEvent e) {
                 images = securePasswordService.getFilenames();
-                setImageSize(images.get(i).toString());
+                setImageSize(images.get(i));
                 i += 1;
                 if (i >= images.size())
                     i = 0;
@@ -122,7 +124,7 @@ public class SecurePasswordValue {
         timer.start();
     }
 
-    private void setImageSize(String picsPath) {
+    private void setImageSize(URL picsPath) {
         ImageIcon icon = new ImageIcon(picsPath);
         Image iconImage = icon.getImage();
         Image scaledImage = iconImage.getScaledInstance(pic.getWidth(), pic.getHeight(), Image.SCALE_SMOOTH);
