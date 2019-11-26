@@ -16,7 +16,7 @@ regulations and allowed characters for a password.
 
 This application can be run on any platform having java runtime environment installed on it.
 It can also be used to generate strong password whenever required.
-It can be downloaded from here: <Link to be provided soon.>
+It can be downloaded from here: https://github.com/00anupam00/securePassword/raw/master/securePassword-0.0.1.jar
 
 ### Technical Specs
 The main tools used to develop this application is Java. Few frameworks are used to orchestrate and
